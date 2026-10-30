@@ -1,0 +1,279 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>คุณภาพน้ำตาลดิบตามกองในโกดัง</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#e4e7e1;--panel:#f5f5f0;--ink:#1c2a2b;--mute:#5b6968;--line:#c6cbc3;--ok:#2f8f6b;--wa:#e0a915;--al:#c2412d;--wt:#10201f;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#121a1a;--panel:#1b2625;--ink:#e8ede9;--mute:#9aa9a6;--line:#324341;--ok:#3aa77e;--wa:#e0a915;--al:#d4543f;--wt:#10201f}}
+:root[data-theme="dark"]{--bg:#121a1a;--panel:#1b2625;--ink:#e8ede9;--mute:#9aa9a6;--line:#324341;--ok:#3aa77e;--wa:#e0a915;--al:#d4543f;--wt:#10201f}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--bg);color:var(--ink);font-family:"Noto Sans Thai",system-ui,sans-serif;line-height:1.5;padding:16px}
+h1{font-size:1.35rem;margin:0 0 2px;font-weight:800}
+.sub{color:var(--mute);font-size:.85rem;margin:0 0 14px}
+.bar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:12px}
+.tabs button{font:inherit;padding:6px 14px;border:1px solid var(--line);background:var(--panel);color:var(--ink);cursor:pointer;border-radius:6px;margin-right:4px}
+.tabs button[aria-pressed=true]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+button:focus-visible,input:focus-visible,.p:focus-visible{outline:3px solid var(--wa);outline-offset:2px}
+.chips{display:flex;gap:10px;margin-left:auto;font-size:.85rem}
+.chips span{display:flex;align-items:center;gap:5px}
+.chips i{width:12px;height:12px;border-radius:3px;display:inline-block}
+.main{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:14px}
+@media(max-width:820px){.main{grid-template-columns:1fr}}
+.box{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:12px}
+.floor{display:grid;grid-template-columns:26px repeat(5,1fr);gap:3px}
+.bl{font-size:.72rem;color:var(--mute);align-self:center;text-align:right;padding-right:3px}
+.p{border:2px solid transparent;border-radius:6px;padding:3px 6px;min-height:44px;cursor:pointer;text-align:left;font:inherit;display:flex;flex-direction:column;justify-content:space-between}
+.p b{font-size:1rem;font-weight:800}
+.p small{font-size:.72rem;opacity:.85}
+.s0{background:var(--ok);color:#fff}.s1{background:var(--wa);color:var(--wt)}.s2{background:var(--al);color:#fff}
+.p[aria-pressed=true]{border-color:var(--ink);box-shadow:0 0 0 2px var(--bg),0 0 0 4px var(--ink)}
+.wall,.door{text-align:center;font-size:.75rem;color:var(--mute);margin:6px 0}
+.door{border-top:4px solid var(--ink);padding-top:4px}
+.note{font-size:.78rem;color:var(--mute);margin-top:8px}
+h2{font-size:1.05rem;margin:0 0 4px}
+.meta{color:var(--mute);font-size:.82rem;margin-bottom:8px}
+.badge{display:inline-block;padding:1px 10px;border-radius:99px;font-size:.78rem;font-weight:600;margin-left:6px}
+.mc{border-top:1px solid var(--line);padding:8px 0}
+.mc .t{display:flex;justify-content:space-between;align-items:baseline;gap:8px}
+.mc .v{font-weight:800;font-size:1.2rem}
+.mc .d{font-size:.78rem;color:var(--mute)}
+svg{width:100%;height:60px;display:block}
+.form{display:grid;grid-template-columns:repeat(3,1fr) auto;gap:6px;margin-top:8px;align-items:end}
+.form label{font-size:.72rem;color:var(--mute);display:block}
+.form input{width:100%;font:inherit;padding:5px;border:1px solid var(--line);border-radius:5px;background:var(--bg);color:var(--ink)}
+.form button{font:inherit;padding:6px 12px;background:var(--ink);color:var(--bg);border:0;border-radius:6px;cursor:pointer}
+.watch{margin-top:12px}
+.ed{width:100%;border-collapse:collapse;font-size:.8rem;margin-top:8px}.ed td,.ed th{padding:2px;text-align:left;font-weight:600;color:var(--mute)}.ed input{width:100%;font:inherit;padding:3px;border:1px solid var(--line);border-radius:4px;background:var(--bg);color:var(--ink)}.ed button{font:inherit;border:0;background:none;color:var(--al);cursor:pointer}
+#cfg{margin-top:12px;border-top:1px solid var(--line);padding-top:8px}#cfg .bar button{font:inherit;padding:5px 10px;border:1px solid var(--line);background:var(--bg);color:var(--ink);border-radius:6px;cursor:pointer}
+.watch button{display:flex;justify-content:space-between;width:100%;font:inherit;background:none;border:0;border-top:1px solid var(--line);padding:6px 0;cursor:pointer;color:var(--ink);text-align:left}
+.tabs button:disabled{opacity:.45;cursor:default}
+[hidden]{display:none!important}
+.mx{width:100%;border-collapse:collapse;font-size:.82rem;margin:8px 0}.mx td,.mx th{padding:4px;text-align:left;border-bottom:1px solid var(--line)}.mx th{color:var(--mute);font-weight:600}
+.mx input,.mx select{font:inherit;padding:3px;border:1px solid var(--line);border-radius:4px;background:var(--bg);color:var(--ink);width:100%;min-width:64px}
+.mb{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0}.mb button{font:inherit;padding:6px 12px;border:1px solid var(--line);background:var(--bg);color:var(--ink);border-radius:6px;cursor:pointer}.mb button.pr{background:var(--ink);color:var(--bg)}
+.msg{padding:8px 10px;border-radius:6px;background:var(--bg);border:1px solid var(--line);font-size:.82rem;margin:6px 0}
+#wh{margin-bottom:12px}#wh button{font-weight:800;padding:8px 18px;font-size:1rem}
+</style>
+</head>
+<body>
+<h1>คุณภาพน้ำตาลดิบตามกองในโกดัง</h1>
+<div class="tabs" id="wh"></div>
+<p class="sub">28 bay &times; 5 ช่อง = 140 กอง (แต่ละแถวคือ 1 bay เลขทางซ้าย, ช่อง 1&ndash;5 เรียงซ้ายไปขวา) แตะที่กองเพื่อดู Pol, ความชื้น และสี (ICUMSA) &middot; ข้อมูลเป็นตัวอย่าง</p>
+<div class="bar">
+  <div class="tabs" id="tabs"></div>
+  <div class="chips"><span><i style="background:var(--ok)"></i>ผ่านเกณฑ์ <b id="c0"></b></span><span><i style="background:var(--wa)"></i>เฝ้าระวัง <b id="c1"></b></span><span><i style="background:var(--al)"></i>เกินเกณฑ์ <b id="c2"></b></span></div>
+</div>
+<div class="main">
+  <div class="box">
+    <div class="wall">ผนังด้านในสุด (Bay 1)</div>
+    <div class="floor" id="floor"></div>
+    <div class="door">ประตูโกดัง (สมมติอยู่ด้าน Bay 28)</div>
+    <p class="note" id="thr"></p>
+    <div class="watch" id="watch"></div>
+    <div id="cfg"></div>
+  </div>
+  <div class="box" id="detail"></div>
+</div>
+<div class="box" id="mix" hidden></div>
+<script>
+const L={
+ pol:{n:'Pol',u:'°Z',ok:99.0,wa:98.5,dir:1,d:2,hint:'ผ่านเมื่อ ≥ 99.0 / เฝ้าระวัง ≥ 98.5'},
+ mo:{n:'ความชื้น',u:'%',ok:.08,wa:.10,dir:-1,d:3,hint:'ผ่านเมื่อ ≤ 0.08 / เฝ้าระวัง ≤ 0.10'},
+ co:{n:'สี ICUMSA',u:'IU',ok:1000,wa:1200,dir:-1,d:0,hint:'ผ่านเมื่อ ≤ 1,000 / เฝ้าระวัง ≤ 1,200'}
+};
+const KEYS=['pol','mo','co'];
+const st=(k,v)=>{const m=L[k];return m.dir>0?(v>=m.ok?0:v>=m.wa?1:2):(v<=m.ok?0:v<=m.wa?1:2)};
+const fmt=(k,v)=>Number(v).toLocaleString('en-US',{minimumFractionDigits:L[k].d,maximumFractionDigits:L[k].d});
+const SN=['ผ่านเกณฑ์','เฝ้าระวัง','เกินเกณฑ์'];
+
+let seed=7;const rnd=()=>{seed=(seed*16807)%2147483647;return seed/2147483647};
+const badF=(b,s)=>b>=26?1:(b>=23&&s>=4?.5:(b<=2&&s==1?.45:0));
+const dates=[];
+for(let w=5;w>=0;w--){const d=new Date(2026,9,21-w*7);dates.push(d.toLocaleDateString('th-TH',{day:'numeric',month:'short'}))}
+function gen(sd){seed=sd;const out=[];
+for(let bay=1;bay<=28;bay++){for(let slot=1;slot<=5;slot++){
+ const id=bay+'-'+slot,f=badF(bay,slot),h=[];
+ let pol=99.35+rnd()*.3,mo=.05+rnd()*.02,co=720+rnd()*200;
+ for(let w=0;w<6;w++){
+  h.push({d:dates[w],pol:+pol.toFixed(2),mo:+mo.toFixed(3),co:Math.round(co)});
+  pol-= .02+rnd()*.03+f*.14; mo+= .002+rnd()*.002+f*.011; co+= 20+rnd()*15+f*75;
+ }
+ out.push({id,bay,slot,ton:Math.round(800+rnd()*1600),age:Math.round(90-bay*2.5+rnd()*8),h});
+}}
+return out}
+const piles=gen(7);
+
+const WHS=[['1','โกดัง 1',7],['3','โกดัง 3',13],['5','โกดัง 5',29]];
+let cur='1';try{const c=localStorage.getItem('sugarWH_cur');if(WHS.some(w=>w[0]==c))cur=c}catch(e){}
+let SK='sugarRaw_v1',UK='sugarUndo_v1',MK='sugarMix_v1';
+const TH0=Object.fromEntries(KEYS.map(k=>[k,[L[k].ok,L[k].wa]]));
+const setKeys=()=>{const x=cur=='1'?'':'_w'+cur;SK='sugarRaw_v1'+x;UK='sugarUndo_v1'+x;MK='sugarMix_v1'+x};
+let trash=[],undo=[];
+const state=()=>({piles,th:Object.fromEntries(KEYS.map(k=>[k,[L[k].ok,L[k].wa]])),trash});
+const save=()=>{try{localStorage.setItem(SK,JSON.stringify(state()))}catch(e){}};
+const keepUndo=()=>{try{localStorage.setItem(UK,JSON.stringify(undo.slice(-10)))}catch(e){}};
+const snap=()=>{undo.push(JSON.stringify(state()));if(undo.length>30)undo.shift();keepUndo()};
+const applyState=s=>{piles.splice(0,piles.length,...s.piles);KEYS.forEach(k=>{if(s.th&&s.th[k]){L[k].ok=s.th[k][0];L[k].wa=s.th[k][1]}});trash=Array.isArray(s.trash)?s.trash:[]};
+const toTrash=(id,i,r)=>{trash.unshift({id,i,r,at:new Date().toLocaleString('th-TH',{day:'numeric',month:'short',hour:'2-digit',minute:'2-digit'})});trash.length=Math.min(trash.length,100)};
+function doUndo(){const z=undo.pop();if(!z)return;keepUndo();applyState(JSON.parse(z));save();draw()}
+function restore(k){const t=trash[k],q=t&&piles.find(x=>x.id===t.id);if(!q)return;snap();q.h.splice(Math.min(t.i,q.h.length),0,t.r);trash.splice(k,1);save();draw()}
+document.addEventListener('keydown',e=>{if((e.ctrlKey||e.metaKey)&&!e.shiftKey&&e.key.toLowerCase()=='z'&&!/INPUT|SELECT|TEXTAREA/.test(e.target.tagName||'')){e.preventDefault();doUndo()}});
+function trashHtml(){const c=v=>(v+'').replace(/[<>&"]/g,'');
+ return `<div style="margin-top:12px"><strong>ถังขยะ (${trash.length})</strong>`+(trash.length?' <button id="tc" style="font:inherit;border:0;background:none;color:var(--mute);cursor:pointer;text-decoration:underline">ล้างทั้งหมด</button>':'')+'<div class="note">ผลตรวจที่ลบ (กด ✕ หรือถูกตัดเมื่อเกิน 8 ครั้ง) เก็บไว้ที่นี่ กู้คืนได้</div>'
+ +trash.slice(0,12).map((t,k)=>`<div class="mc" style="display:flex;justify-content:space-between;gap:8px;align-items:center;font-size:.8rem"><span>กอง ${c(t.id)} · ${c(t.r.d)} · Pol ${c(t.r.pol)} · ชื้น ${c(t.r.mo)} · สี ${c(t.r.co)}<br><span class="note" style="margin:0">ลบเมื่อ ${c(t.at)}</span></span><button data-rs="${k}" style="font:inherit;padding:3px 10px;border:1px solid var(--line);background:var(--bg);color:var(--ink);border-radius:6px;cursor:pointer">กู้คืน</button></div>`).join('')
+ +(trash.length>12?`<div class="note">แสดง 12 รายการล่าสุด จากทั้งหมด ${trash.length}</div>`:'')+'</div>'}
+const hint=k=>{const m=L[k];return m.dir>0?`ผ่านเมื่อ ≥ ${m.ok} / เฝ้าระวัง ≥ ${m.wa}`:`ผ่านเมื่อ ≤ ${m.ok} / เฝ้าระวัง ≤ ${m.wa}`};
+let metric='all',sel=null;
+const last=p=>p.h[p.h.length-1];
+const worst=p=>Math.max(...KEYS.map(k=>st(k,last(p)[k])));
+const stOf=p=>metric==='all'?worst(p):st(metric,last(p)[metric]);
+function loadWH(w){cur=w;try{localStorage.setItem('sugarWH_cur',w)}catch(e){}setKeys();
+ const g=WHS.find(x=>x[0]==w);piles.splice(0,piles.length,...gen(g[2]));KEYS.forEach(k=>{L[k].ok=TH0[k][0];L[k].wa=TH0[k][1]});trash=[];undo=[];
+ try{const s=JSON.parse(localStorage.getItem(SK));if(s&&s.piles&&s.piles.length==piles.length)applyState(s)}catch(e){}
+ try{const u=JSON.parse(localStorage.getItem(UK));if(Array.isArray(u))undo=u}catch(e){}
+ mix={target:1000,total:1000,tol:10,src:[],pct:[],msg:''};
+ try{const z=JSON.parse(localStorage.getItem(MK));if(z&&Array.isArray(z.src)&&Array.isArray(z.pct))mix=Object.assign(mix,z)}catch(e){}
+ metric='all';sel=piles.slice().sort((a,b)=>worst(b)-worst(a))[0].id}
+function whTabs(){const el=document.getElementById('wh');el.innerHTML='';
+ WHS.forEach(([k,n])=>{const b=document.createElement('button');b.textContent=n;b.setAttribute('aria-pressed',cur===k);b.onclick=()=>{if(cur!==k){loadWH(k);draw()}};el.appendChild(b)});
+ document.querySelector('h1').textContent='คุณภาพน้ำตาลดิบตามกองใน'+WHS.find(x=>x[0]==cur)[1]}
+
+function tabs(){
+ const t=[['all','ภาพรวม'],['pol','Pol'],['mo','ความชื้น'],['co','สี'],['mix','คำนวณ Mix']];
+ const el=document.getElementById('tabs');el.innerHTML='';
+ t.forEach(([k,n])=>{const b=document.createElement('button');b.textContent=n;b.setAttribute('aria-pressed',metric===k);b.onclick=()=>{metric=k;draw()};el.appendChild(b)});
+ const u=document.createElement('button');u.textContent='↶ เลิกทำ'+(undo.length?' ('+undo.length+')':'');u.disabled=!undo.length;u.title='ย้อนการแก้ไข/ลบล่าสุด (Ctrl+Z)';u.style.marginLeft='8px';u.onclick=doUndo;el.appendChild(u);
+}
+function spark(k,p){
+ const m=L[k],v=p.h.map(x=>x[k]),W=220,H=60,pad=6;
+ const all=v.concat([m.ok,m.wa]);let lo=Math.min(...all),hi=Math.max(...all);const sp=hi-lo||1;lo-=sp*.1;hi+=sp*.1;
+ const X=i=>pad+i*(W-2*pad)/(v.length-1),Y=x=>H-pad-(x-lo)/(hi-lo)*(H-2*pad);
+ const col=['var(--ok)','var(--wa)','var(--al)'];
+ let s=`<svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="none" role="img" aria-label="แนวโน้ม ${m.n}">`;
+ [[m.ok,'var(--ok)'],[m.wa,'var(--al)']].forEach(([t,c])=>{s+=`<line x1="0" x2="${W}" y1="${Y(t)}" y2="${Y(t)}" stroke="${c}" stroke-dasharray="3 3" opacity=".6"/>`});
+ s+=`<polyline fill="none" stroke="var(--ink)" stroke-width="2" points="${v.map((x,i)=>X(i)+','+Y(x)).join(' ')}"/>`;
+ v.forEach((x,i)=>{s+=`<circle cx="${X(i)}" cy="${Y(x)}" r="${i==v.length-1?4.5:2.5}" fill="${col[st(k,x)]}"/>`});
+ return s+'</svg>';
+}
+function detail(){
+ const p=piles.find(x=>x.id===sel),l=last(p),pr=p.h[p.h.length-2],w=worst(p);
+ const cls=['s0','s1','s2'];
+ let h=`<h2>กอง ${p.id}<span class="badge ${cls[w]}">${SN[w]}</span></h2>
+ <div class="meta">${p.lot?(p.lot+'').replace(/[<>&"]/g,'')+' &middot; ':''}Bay ${p.bay} ช่อง ${p.slot} &middot; ${p.ton.toLocaleString('en-US')} ตัน &middot; เก็บมาแล้ว ${p.age} วัน &middot; ตรวจล่าสุด ${l.d}</div>`;
+ KEYS.forEach(k=>{
+  const m=L[k],s=st(k,l[k]),df=l[k]-pr[k];
+  h+=`<div class="mc"><div class="t"><span>${m.n}<span class="badge ${cls[s]}">${SN[s]}</span></span><span class="v">${fmt(k,l[k])} <small>${m.u}</small></span></div>${spark(k,p)}<div class="d">${hint(k)} &middot; เทียบสัปดาห์ก่อน ${df>=0?'+':''}${fmt(k,df)}</div></div>`;
+ });
+ h+=`<div class="form"><div><label for="ip">Pol</label><input id="ip" type="number" step="0.01" value="${l.pol}"></div><div><label for="im">ความชื้น %</label><input id="im" type="number" step="0.001" value="${l.mo}"></div><div><label for="ic">สี IU</label><input id="ic" type="number" step="1" value="${l.co}"></div><button id="add">บันทึกค่าใหม่</button></div>`;
+ h+=`<div class="form"><div><label for="ton">ปริมาณ (ตัน)</label><input id="ton" type="number" value="${p.ton}"></div><div><label for="age">อายุเก็บ (วัน)</label><input id="age" type="number" value="${p.age}"></div><div><label for="lot">Lot</label><input id="lot" type="text" value="${(p.lot||'').replace(/"/g,'')}"></div><button id="sv">บันทึกข้อมูลกอง</button></div>`;
+ h+=`<table class="ed"><tr><th>วันที่</th><th>Pol</th><th>ชื้น %</th><th>สี</th><th></th></tr>${p.h.map((r,i)=>`<tr><td><input data-i="${i}" data-k="d" value="${r.d}"></td><td><input type="number" step="0.01" data-i="${i}" data-k="pol" value="${r.pol}"></td><td><input type="number" step="0.001" data-i="${i}" data-k="mo" value="${r.mo}"></td><td><input type="number" data-i="${i}" data-k="co" value="${r.co}"></td><td><button data-x="${i}" aria-label="ลบ">✕</button></td></tr>`).join('')}</table><p class="note">แก้ค่าในตารางได้โดยตรง ลบแถวได้ (เหลืออย่างน้อย 2 ครั้ง) — ข้อมูลบันทึกในเบราว์เซอร์นี้</p>`;
+ const el=document.getElementById('detail');el.innerHTML=h;
+ el.querySelectorAll('[data-i]').forEach(x=>x.onchange=()=>{const d=x.dataset.k=='d',v=d?x.value:parseFloat(x.value);if(!d&&isNaN(v))return;if(p.h[+x.dataset.i][x.dataset.k]===v)return;snap();p.h[+x.dataset.i][x.dataset.k]=v;save();draw()});
+ el.querySelectorAll('[data-x]').forEach(x=>x.onclick=()=>{if(p.h.length<=2)return;snap();const i=+x.dataset.x;toTrash(p.id,i,p.h.splice(i,1)[0]);save();draw()});
+ document.getElementById('sv').onclick=()=>{snap();const t=parseFloat(ton.value),a=parseFloat(age.value);if(!isNaN(t))p.ton=t;if(!isNaN(a))p.age=a;p.lot=lot.value;save();draw()};
+ document.getElementById('add').onclick=()=>{
+  const a=parseFloat(ip.value),b=parseFloat(im.value),c=parseFloat(ic.value);
+  if([a,b,c].some(isNaN))return;snap();
+  p.h.push({d:new Date().toLocaleDateString('th-TH',{day:'numeric',month:'short'}),pol:a,mo:b,co:c});
+  if(p.h.length>8)toTrash(p.id,0,p.h.shift());
+  save();draw();
+ };
+}
+function floor(){
+ const el=document.getElementById('floor');el.innerHTML='';
+ const cls=['s0','s1','s2'];
+ for(let bay=1;bay<=28;bay++){const lb=document.createElement('div');lb.className='bl';lb.textContent=bay;lb.style.gridRow=bay;lb.style.gridColumn=1;el.appendChild(lb);for(let c=1;c<=5;c++){
+  const p=piles.find(x=>x.id===bay+'-'+c),l=last(p);
+  const b=document.createElement('button');b.className='p '+cls[stOf(p)];
+  b.style.gridRow=bay;b.style.gridColumn=c+1;b.title='Bay '+bay+' ช่อง '+c;
+  b.setAttribute('aria-pressed',sel===p.id);
+  const val=metric==='all'?['ผ่าน','เฝ้า','เกิน'][worst(p)]:fmt(metric,l[metric]);
+  b.setAttribute('aria-label',`Bay ${bay} ช่อง ${c} ${val}`);
+  b.innerHTML=`<b>${val}</b>`;
+  if(metric==='all')b.querySelector('b').style.fontSize='.78rem';
+  b.onclick=()=>{sel=p.id;draw()};
+  el.appendChild(b);
+ }}
+}
+function watch(){
+ const bad=piles.filter(p=>worst(p)>0).sort((a,b)=>worst(b)-worst(a)).slice(0,6);
+ const el=document.getElementById('watch');
+ el.innerHTML='<strong>ควรตรวจก่อน</strong>'+(bad.length?'':'<div class="note">ทุกกองอยู่ในเกณฑ์</div>');
+ bad.forEach(p=>{const l=last(p);const b=document.createElement('button');
+  b.innerHTML=`<span>กอง ${p.id} &middot; ${SN[worst(p)]}</span><span class="note" style="margin:0">Pol ${fmt('pol',l.pol)} &middot; ชื้น ${fmt('mo',l.mo)} &middot; สี ${fmt('co',l.co)}</span>`;
+  b.onclick=()=>{sel=p.id;draw()};el.appendChild(b)});
+}
+function cfg(){const el=document.getElementById('cfg');
+ el.innerHTML='<strong>เกณฑ์ (แก้ไขได้)</strong><table class="ed"><tr><th></th><th>ผ่าน</th><th>เฝ้าระวัง</th></tr>'+KEYS.map(k=>`<tr><td>${L[k].n} ${L[k].dir>0?'≥':'≤'}</td><td><input type="number" step="any" data-th="${k}" data-j="ok" value="${L[k].ok}"></td><td><input type="number" step="any" data-th="${k}" data-j="wa" value="${L[k].wa}"></td></tr>`).join('')+'</table><div class="bar" style="margin-top:8px"><button id="bx">สำรอง JSON</button><button id="bi">นำเข้า JSON</button><button id="br">รีเซ็ตข้อมูลตัวอย่าง</button><input type="file" id="fi" accept=".json" hidden></div>'+trashHtml();
+ el.querySelectorAll('[data-th]').forEach(x=>x.onchange=()=>{const v=parseFloat(x.value);if(isNaN(v))return;snap();L[x.dataset.th][x.dataset.j]=v;save();draw()});
+ document.getElementById('bx').onclick=async()=>{const data=JSON.stringify({piles,th:Object.fromEntries(KEYS.map(k=>[k,[L[k].ok,L[k].wa]]))});let ok=false;try{const d=await claude.use('downloads');if(d){await d.save({filename:'sugar_raw_backup_wh'+cur+'.json',data});ok=true}}catch(e){ok=!!(e&&e.code=='declined')}
+  if(!ok){const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([data],{type:'application/json'}));a.download='sugar_raw_backup_wh'+cur+'.json';a.click()}};
+ document.getElementById('bi').onclick=()=>document.getElementById('fi').click();
+ document.getElementById('fi').onchange=async e=>{try{const s=JSON.parse(await e.target.files[0].text());if(s.piles&&s.piles.length==piles.length){snap();applyState(s);save();draw()}else alert('ไฟล์ไม่ถูกต้อง')}catch(x){alert('อ่านไฟล์ไม่ได้')}};
+ document.getElementById('br').onclick=()=>{if(confirm('รีเซ็ตข้อมูลของโกดังนี้เป็นข้อมูลตัวอย่าง? (กด ↶ เลิกทำ เพื่อย้อนกลับได้)')){snap();try{localStorage.removeItem(SK)}catch(x){}location.reload()}};
+ el.querySelectorAll('[data-rs]').forEach(b=>b.onclick=()=>restore(+b.dataset.rs));
+ const tc=document.getElementById('tc');if(tc)tc.onclick=()=>{snap();trash=[];save();draw()};
+}
+
+let mix={target:1000,total:1000,tol:10,src:[],pct:[],msg:''};
+const msave=()=>{try{localStorage.setItem(MK,JSON.stringify(mix))}catch(e){}};
+const P=id=>piles.find(p=>p.id===id);
+const cmp=(a,b)=>{for(let i=0;i<a.length;i++)if(a[i]!==b[i])return a[i]>b[i]?1:-1;return 0};
+function mixAuto(){
+ const n=mix.src.length,rs=mix.src.map(id=>{const p=P(id);return{co:last(p).co,age:p.age,cap:Math.min(100,Math.floor(p.ton/mix.total*100))}});
+ let best=null;const v=new Array(n).fill(0);
+ (function rec(i,left){
+  if(i==n-1){if(left>rs[i].cap)return;v[i]=left;
+   const co=v.reduce((a,x,j)=>a+x*rs[j].co,0)/100,d=Math.abs(co-mix.target),fe=v.reduce((a,x,j)=>a+x*rs[j].age,0),ok=d<=mix.tol;
+   const key=ok?[1,fe,-d]:[0,-d,fe];if(!best||cmp(key,best.key)>0)best={v:v.slice(),key,d,ok};return}
+  for(let x=0;x<=Math.min(left,rs[i].cap);x++){v[i]=x;rec(i+1,left-x)}
+ })(0,100);
+ return best}
+function mixView(){
+ const el=document.getElementById('mix');
+ mix.src=mix.src.filter(id=>P(id));
+ if(mix.src.length<2){const o=piles.slice().sort((a,b)=>last(a).co-last(b).co);mix.src=[o[0].id,o[o.length-1].id];mix.pct=[50,50]}
+ while(mix.pct.length<mix.src.length)mix.pct.push(0);mix.pct.length=mix.src.length;
+ const rows=mix.src.map((id,i)=>{const p=P(id);return{p,l:last(p),pc:+mix.pct[i]||0,i}});
+ const sum=rows.reduce((a,r)=>a+r.pc,0);
+ rows.forEach(r=>{r.sh=sum?r.pc/sum:0;r.t=r.sh*mix.total});
+ const m=k=>rows.reduce((a,r)=>a+r.sh*r.l[k],0),R={co:m('co'),pol:m('pol'),mo:m('mo')};
+ const cls=['s0','s1','s2'],diff=R.co-mix.target,over=rows.filter(r=>r.t>r.p.ton+1e-9);
+ const opts=id=>piles.map(p=>`<option value="${p.id}" ${p.id===id?'selected':''}>${p.id} · สี ${last(p).co.toLocaleString('en-US')} · ${p.ton.toLocaleString('en-US')} ตัน</option>`).join('');
+ let h=`<h2>คำนวณสัดส่วนผสมน้ำตาลดิบตามค่าสี (ICUMSA)</h2><div class="meta">เลือก 2–4 กองที่จะผสม แล้วกรอกสัดส่วนเอง หรือกด "คำนวณอัตโนมัติ" ให้หาสัดส่วนที่ได้สีตามเป้าหมายและใช้กองเก่าก่อน (FEFO) · ใช้ค่าตรวจล่าสุดของแต่ละกอง</div>
+ <div class="form" style="grid-template-columns:repeat(3,1fr)"><div><label for="mt">สีเป้าหมาย (IU)</label><input id="mt" type="number" value="${mix.target}"></div><div><label for="mtot">ปริมาณที่จะผสม (ตัน)</label><input id="mtot" type="number" value="${mix.total}"></div><div><label for="mtol">ยอมรับคลาดเคลื่อน ± IU</label><input id="mtol" type="number" value="${mix.tol}"></div></div>
+ <div style="overflow-x:auto"><table class="mx"><tr><th>กอง</th><th>สี (IU)</th><th>Pol</th><th>ชื้น %</th><th>คงเหลือ (ตัน)</th><th>อายุ (วัน)</th><th>สัดส่วน %</th><th>ใช้ (ตัน)</th><th></th></tr>`
+ +rows.map(r=>`<tr><td><select data-s="${r.i}" aria-label="เลือกกอง">${opts(r.p.id)}</select></td><td>${fmt('co',r.l.co)}</td><td>${fmt('pol',r.l.pol)}</td><td>${fmt('mo',r.l.mo)}</td><td>${r.p.ton.toLocaleString('en-US')}</td><td>${r.p.age}</td><td><input type="number" min="0" step="1" data-p="${r.i}" value="${r.pc}" aria-label="สัดส่วน %"></td><td${r.t>r.p.ton+1e-9?' style="color:var(--al);font-weight:800"':''}>${r.t.toLocaleString('en-US',{maximumFractionDigits:1})}</td><td>${rows.length>2?`<button data-r="${r.i}" aria-label="ลบ" style="border:0;background:none;color:var(--al);cursor:pointer">✕</button>`:''}</td></tr>`).join('')
+ +`</table></div><div class="mb"><button id="mauto" class="pr">คำนวณอัตโนมัติ (FEFO)</button>${rows.length<4?'<button id="madd">+ เพิ่มกอง</button>':''}</div>`;
+ if(mix.msg)h+=`<div class="msg">${mix.msg}</div>`;
+ if(rows.length==2){const c1=rows[0].l.co,c2=rows[1].l.co;h+=`<div class="msg">สัดส่วนตรงตัวสำหรับ 2 กอง: `+(c1==c2?'สีสองกองเท่ากัน':(()=>{const x=(mix.target-c2)/(c1-c2);return x>=0&&x<=1?`กอง ${rows[0].p.id} ${(x*100).toFixed(1)}% : กอง ${rows[1].p.id} ${((1-x)*100).toFixed(1)}%`:`เป้าหมายอยู่นอกช่วงสีของสองกองนี้ (${fmt('co',Math.min(c1,c2))}–${fmt('co',Math.max(c1,c2))} IU)`})())+'</div>'}
+ if(sum&&Math.abs(sum-100)>.01)h+=`<div class="msg">สัดส่วนรวม ${sum}% — ระบบปรับสัดส่วนเป็น 100% ให้ตอนคำนวณ</div>`;
+ if(over.length)h+=`<div class="msg" style="color:var(--al)">ปริมาณที่ใช้เกินคงเหลือ: กอง ${over.map(r=>r.p.id).join(', ')}</div>`;
+ h+=['co','pol','mo'].map(k=>{const s=st(k,R[k]);return`<div class="mc"><div class="t"><span>${L[k].n} (ผลผสม)<span class="badge ${cls[s]}">${SN[s]}</span></span><span class="v">${fmt(k,R[k])} <small>${L[k].u}</small></span></div><div class="d">${k=='co'?`เป้าหมาย ${fmt('co',mix.target)} · ส่วนต่าง ${diff>=0?'+':''}${fmt('co',diff)} IU ${Math.abs(diff)<=mix.tol?'(อยู่ในช่วงที่ยอมรับ)':'(เกินช่วงที่ยอมรับ)'}`:hint(k)}</div></div>`}).join('');
+ h+='<p class="note">คำนวณแบบถ่วงน้ำหนักตามมวล (ค่าประมาณ) ค่าสีที่ผสมจริงอาจต่างเล็กน้อย ควรตรวจยืนยันด้วยตัวอย่างหลังผสม · สถานะสีใช้เกณฑ์เดียวกับหน้าภาพรวม</p>';
+ el.innerHTML=h;
+ const num=(id,k)=>{const x=document.getElementById(id);x.onchange=()=>{const v=parseFloat(x.value);if(!isNaN(v)&&v>=0){mix[k]=v;mix.msg='';msave()}mixView()}};
+ num('mt','target');num('mtot','total');num('mtol','tol');
+ el.querySelectorAll('[data-s]').forEach(x=>x.onchange=()=>{mix.src[+x.dataset.s]=x.value;mix.msg='';msave();mixView()});
+ el.querySelectorAll('[data-p]').forEach(x=>x.onchange=()=>{const v=parseFloat(x.value);mix.pct[+x.dataset.p]=isNaN(v)||v<0?0:v;mix.msg='';msave();mixView()});
+ el.querySelectorAll('[data-r]').forEach(x=>x.onclick=()=>{const i=+x.dataset.r;mix.src.splice(i,1);mix.pct.splice(i,1);mix.msg='';msave();mixView()});
+ const ad=document.getElementById('madd');if(ad)ad.onclick=()=>{const f=piles.find(p=>!mix.src.includes(p.id));mix.src.push(f.id);mix.pct.push(0);mix.msg='';msave();mixView()};
+ document.getElementById('mauto').onclick=()=>{const b=mixAuto();
+  if(!b)mix.msg='ปริมาณคงเหลือของกองที่เลือกรวมกันไม่พอสำหรับ '+mix.total.toLocaleString('en-US')+' ตัน — เพิ่มกองหรือลดปริมาณที่ผสม';
+  else{mix.pct=b.v;mix.msg=(b.ok?'พบสัดส่วนที่ได้สีตามเป้าหมาย (ส่วนต่าง ':'ไม่มีสัดส่วนที่อยู่ในช่วงที่ยอมรับ ใช้ค่าที่ใกล้เป้าที่สุด (ส่วนต่าง ')+b.d.toFixed(1)+' IU)'+(b.ok?' และเลือกใช้กองเก่าก่อนให้มากที่สุด':' — ลองเปลี่ยนกองหรือเพิ่มช่วงที่ยอมรับ')}
+  msave();mixView()};
+}
+function draw(){
+ whTabs();const mx=metric==='mix';document.querySelector('.main').hidden=mx;document.getElementById('mix').hidden=!mx;document.querySelector('.chips').hidden=mx;
+ tabs();if(mx){mixView();return}
+ floor();detail();watch();cfg();const cn=[0,0,0];piles.forEach(p=>cn[stOf(p)]++);[0,1,2].forEach(i=>document.getElementById('c'+i).textContent=cn[i]);
+ document.getElementById('thr').textContent=metric==='all'?'สีของกองคือสถานะที่แย่ที่สุดของ 3 ค่า เกณฑ์ที่ใช้เป็นค่าสมมติ ปรับให้ตรงกับสัญญาซื้อขายของคุณ':'เกณฑ์ '+L[metric].n+': '+hint(metric);
+}
+loadWH(cur);draw();
+</script>
+</body>
+</html>
